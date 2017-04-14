@@ -53,6 +53,7 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+/*
 $route['user/login'] = 'user/login';
 $route['user/logout'] = 'user/logout';
 $route['user/profile'] = 'user/profile';
@@ -63,3 +64,4 @@ $route['pages/view/(:any)'] = 'pages/view/$1';
 $route['new'] = 'new';
 $route['new/create'] = 'new/create';
 $route['new/view/(:any)'] = 'new/view/$1';
+*/
