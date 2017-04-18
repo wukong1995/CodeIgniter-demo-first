@@ -13,7 +13,9 @@ class User extends CI_Controller {
         $this->load->helper('form');
         $this->load->database();
         $this->load->helper('url_helper');
-        $this->load->library("session");
+        $this->load->library(
+            array("session",'encrypt')
+        );
     }
 
     public function login() {
@@ -51,18 +53,17 @@ class User extends CI_Controller {
                 $password = $row->password;
             }
 
-            if ($password == $_POST ['password']) {
+            if ($this->encrypt->decode($password) == $_POST ['password']) {
                 $this->session->set_userdata('user',$newdata);
 
                 echo json_encode(array(
                     'success' => 1,
-                    'msg' => '登录成功',
-                    'name_err'=> 1
+                    'msg' => '登录成功'
                 ));
                 return ;
             } else {
                 echo json_encode(array(
-                    'success' => 1,
+                    'success' => 0,
                     'msg' => '密码不匹配',
                     'pwd_err'=> 1
                 ));
